@@ -1,21 +1,21 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     var GoTRPG = {
         characters: {
             Daenerys: {
                 health: 100,
                 attack: 14,
-                counterAttack: 5 
+                counterAttack: 5
             },
             KhalDrogo: {
                 health: 150,
                 attack: 8,
-                counterAttack: 20 
+                counterAttack: 20
             },
             Jaime: {
                 health: 120,
                 attack: 8,
-                counterAttack: 15 
+                counterAttack: 15
             },
             JonSnow: {
                 health: 180,
@@ -26,40 +26,63 @@ $(document).ready(function(){
         characterChosen: null,
         enemyChosen: null,
         enemiesWaiting: [],
+        gameInPlay: false,
 
 
-        start: function (name){
-            if(this.characterChosen){
+        start: function (name) {
+           
+            if (this.characterChosen) {
                 return;
             }
             this.characterChosen = name;
-            this.enemiesWaiting = Object.keys(this.characters).filter(function(character){
+            this.enemiesWaiting = Object.keys(this.characters).filter(function (character) {
                 return character !== name;
             })
-            var characters = $(".characters").children().children();
-            characters = characters.filter(function(index, character){
+            this.setUpZones(name);
+        },
+        setUpZones: function (name) {
+            var that = this;
+            var GotCharacters = this.characters;
+            var characters = $(".characters").find(".card");
+            $.each(characters, function (index, character) {
+                var characterName = character.id;
+                var stats = $(character).find(".stats");
+                stats.html(
+                    "<p>Health : " + GotCharacters[characterName].health + "</p>" +
+                    "<p>Attack : " + GotCharacters[characterName].attack + "</p>" +
+                    "<p>Counter Attack : " + GotCharacters[characterName].counterAttack + "</p>"
+                )
+            })
+            characters = characters.filter(function (index, character) {
                 return character.id !== name;
             })
+            
             $("#enemy-area").append(characters);
-            // $.each(characters, (index, value) => {
-                
-            // });
-
+        },
+        chooseAttacker: function (name) {
+            this.gameInPlay = true;
+            var enemy = $("#enemy-area").find("#"+ this.enemyChosen);
+            console.log(enemy);
+            $("#defender-area").append(enemy);
+            
         }
-
-
-
 
 
     }
 
-    $(".card").on("click", function() {
-        GoTRPG.start($(this).attr("id"));
-    
-    })
-    
+
+$(".card").on("click", function () {
+    GoTRPG.start($(this).attr("id"));
+
 })
 
+$("#enemy-area").on("click", function(event) {
+    GoTRPG.enemyChosen = event.target.getAttribute("data-name");
+
+    GoTRPG.chooseAttacker();
+})
+
+});
 
 
 
