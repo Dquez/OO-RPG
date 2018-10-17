@@ -7,10 +7,81 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Game of Thrones RPG</h1>
+            </div>
+            <div class="col-md-8">
+                <h3>Character Area</h3>
+                <div class="row">
+                    <div class="col-md-3 character-div">
+                        <div class="card card-default Daenerys">
+                            <div class="card-header">
+                                <p class="card-title"><strong>Daenerys Targaryen</strong></p>
+                            </div>
+                            <div class="card-body">
+                                <img class="character" data-name="Daenerys" src="assets/images/Daenerys_Targaryen.jpg"
+                                    alt="Daenerys_Targaryen" />
+                                <div class="stats"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 character-div">
+                        <div class="card card-default Jaime">
+                            <div class="card-header">
+                                <p class="card-title"><strong>Jaime Lanister</strong></p>
+                            </div>
+                            <div class="card-body">
+                                <img class="character" data-name="Jaime" src="assets/images/Jaime_Lanister.jpg" alt="Jaime_Lanister">
+                                <div class="stats"></div>
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="col-md-3 character-div">
+                        <div class="card card-default Snow">
+                            <div class="card-header">
+                                <p class="card-title"><strong>Jon Snow</strong></p>
+                            </div>
+                            <div class="card-body">
+                                <img class="character" data-name="Snow" src="assets/images/Jon_Snow.png" alt="Jon_Snow">
+                                <div class="stats"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 character-div">
+                        <div class="card card-default Drogo">
+                            <div class="card-header">
+                                <p class="card-title"><strong>Khal Drogo</strong></p>
+                            </div>
+                            <div class="card-body">
+                                <img class="character" data-name="Drogo" src="assets/images/Khal_Drogo.jpg" alt="Khal_Drogo">
+                                <div class="stats"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Enemies</h3>
+                <div id="enemy-area"></div>
+            </div>
+            <div class="col-md-8 ">
+                <h3>Defender Area</h3>
+                <div id="defender-area"></div>
+            </div>
+
+
+        </div>
+    </div>
 
 
 
